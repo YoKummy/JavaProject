@@ -1,6 +1,6 @@
 package WebCrawler;
 import java.util.*;
-public class spiderTest {
+public class SpiderTest {
     public static void main(String[] args) 
     {
         while (true) 
@@ -10,7 +10,7 @@ public class spiderTest {
             String webSite = scn.nextLine();
             System.out.println("Please enter your word next: ");
             String Search = scn.nextLine();
-            spider spider = new spider();
+            Spider spider = new Spider();
             spider.search(webSite, Search);
             scn.close();
         }

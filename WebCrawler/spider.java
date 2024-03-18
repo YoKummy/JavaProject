@@ -2,7 +2,7 @@ package WebCrawler;
 import java.util.*;
 
 
-public class spider 
+public class Spider 
 {
     private static final int MAX_PAGE_TO_SEARCH = 10;
     private HashSet<String> pagesVisted = new HashSet<String>();
@@ -13,7 +13,7 @@ public class spider
         while (this.pagesVisted.size() < MAX_PAGE_TO_SEARCH) 
         {
             String currentUrl;
-            spiderLeg leg = new spiderLeg();
+            SpiderLeg leg = new SpiderLeg();
             if(this.pagesToVisit.isEmpty())
             {
                 currentUrl = url;

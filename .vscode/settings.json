@@ -1,6 +1,7 @@
 {
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
-        "WebCrawler/jsoup-1.17.2.jar"
+        "WebCrawler/jsoup-1.17.2.jar",
+        "Blockchain/gson-2.6.2.jar"
     ]
 }
