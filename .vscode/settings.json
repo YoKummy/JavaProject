@@ -2,6 +2,8 @@
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
         "WebCrawler/jsoup-1.17.2.jar",
-        "Blockchain/gson-2.6.2.jar"
+        "Blockchain/gson-2.6.2.jar",
+        "Blockchain/Library/bcprov-jdk18on-177.jar",
+        "Blockchain/Library/gson-2.6.2.jar"
     ]
 }
