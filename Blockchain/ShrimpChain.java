@@ -30,7 +30,21 @@ public class ShrimpChain {
         System.out.println("\nThe block chain: ");;
         System.out.println(blockchainJson); */
 
-
+        //setup Bouncey castle as a Security Provider
+        Security.addProvider(new org.bouncycastle.jce.provider.BouncyCastleProvider());
+        //create new wallets
+        walletA = new Wallet();
+        walletB = new Wallet();
+        //test public and privates key
+        System.out.println("Private and public keys:");
+        System.out.println(StringUtil.getStringFromKey(walletA.privateKey));
+        System.out.println(StringUtil.getStringFromKey(walletA.publicKey));
+        //create a test transaction from wallet A to B
+        Transaction transaction = new Transaction(walletA.publicKey, walletB.publicKey, 5, null);
+        transaction.generateSignature(walletA.privateKey);
+        //verify the signature works and verify it from the public key
+        System.out.println("Is signature verified:");
+        System.out.println(transaction.verifySignature());
     }
 
     public static Boolean isChainValid(){
