@@ -5,7 +5,11 @@ import com.google.gson.GsonBuilder;
 public class TestChain {
 
     public static ArrayList<Block> blockchain = new ArrayList<Block>();
+<<<<<<< Updated upstream
     public static int difficulty = 1;
+=======
+    public static int difficulty = 2;
+>>>>>>> Stashed changes
 
     public static void main(String[] args) {
         //add our blocks to the blockchain ArrayList
