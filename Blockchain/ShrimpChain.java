@@ -2,7 +2,7 @@ package Blockchain;
 
 import java.util.*;
 import com.google.gson.GsonBuilder;
-public class TestChain {
+public class ShrimpChain {
 
     public static ArrayList<Block> blockchain = new ArrayList<Block>();
 
