@@ -31,7 +31,7 @@ public class TestChain {
         //add our blocks to the blockchain ArrayList
         blockchain.add(new Block("This first block is for testing", "0"));
         blockchain.add(new Block("Yo second block here", blockchain.get(blockchain.size() - 1).hash));
-        blockchain.add(new Block("Hey I'm the thrid one", blockchain.get(blockchain.size() - 1).hash));
+        blockchain.add(new Block("Hey Im the thrid one", blockchain.get(blockchain.size() - 1).hash));
         
         String blockchainJson = new GsonBuilder().setPrettyPrinting().create().toJson(blockchain);
         System.out.println(blockchainJson);
