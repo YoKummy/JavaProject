@@ -1,17 +1,18 @@
 package Blockchain;
 
+import java.security.*;
 import java.util.*;
 import com.google.gson.GsonBuilder;
 public class ShrimpChain {
 
     public static ArrayList<Block> blockchain = new ArrayList<Block>();
-
     public static int difficulty = 5;
-
+    public static Wallet walletA;
+    public static Wallet walletB;
 
     public static void main(String[] args) {
         //add our blocks to the blockchain ArrayList
-        blockchain.add(new Block("This first block is for testing", "0"));
+        /* blockchain.add(new Block("This first block is for testing", "0"));
         System.out.println("Tyring to mine block 1...");
         blockchain.get(0).mineBlock(difficulty);
 
@@ -27,7 +28,9 @@ public class ShrimpChain {
 
         String blockchainJson = new GsonBuilder().setPrettyPrinting().create().toJson(blockchain);
         System.out.println("\nThe block chain: ");;
-        System.out.println(blockchainJson);
+        System.out.println(blockchainJson); */
+
+
     }
 
     public static Boolean isChainValid(){

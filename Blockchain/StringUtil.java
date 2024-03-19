@@ -25,6 +25,7 @@ public class StringUtil {
         }
     }
 
+    //Applies ECDSA Signature and returns the result(as bytes)
     public static byte[] applyECDSASig(PrivateKey privateKey, String input){
         Signature dsa;
         byte[] output = new byte[0];
