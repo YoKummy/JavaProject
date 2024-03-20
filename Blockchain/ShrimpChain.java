@@ -27,7 +27,7 @@ public class ShrimpChain {
         System.out.println("\nBlockChain is Valid: " + isChainValid());
 
         String blockchainJson = new GsonBuilder().setPrettyPrinting().create().toJson(blockchain);
-        System.out.println("\nThe block chain: ");;
+        System.out.println("\nThe block chain: ");
         System.out.println(blockchainJson); */
 
         //setup Bouncey castle as a Security Provider
