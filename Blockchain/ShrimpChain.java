@@ -68,7 +68,6 @@ public class ShrimpChain {
             //check if hash is solved
             if (!currentBlock.hash.substring(0, difficulty).equals(hashTarget)) {
                 System.out.println("This block hasn't been mined");
-                System.out.print("hi");
                 return false;
             }
         }
