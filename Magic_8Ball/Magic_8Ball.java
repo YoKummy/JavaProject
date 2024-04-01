@@ -12,10 +12,8 @@ class frame extends JFrame implements ActionListener{
     private JLabel outputLabel;
     private JTextField input;
     private JTextField outputText;
-    private ArrayList<String> output = new ArrayList<>();
     private JButton ask;
     private JButton clear;
-    private JButton play_again;
     
     frame(){
         contentPane = new JPanel();
@@ -57,28 +55,63 @@ class frame extends JFrame implements ActionListener{
         clear.setBounds(110, 60, 80, 20);
         clear.addActionListener(this);
 
-        play_again = new JButton();
-        play_again.setText("Play again");
-        play_again.setBounds(200, 60, 100, 20);
-        play_again.addActionListener(this);
-
         contentPane.add(inputJLabel);
         contentPane.add(input);
         contentPane.add(outputLabel);
         contentPane.add(outputText);
         contentPane.add(ask);
         contentPane.add(clear);
-        contentPane.add(play_again);
         setVisible(true);
 
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-       
-        throw new UnsupportedOperationException("Unimplemented method 'actionPerformed'");
+       if (e.getSource() == ask) {
+        String question = input.getText();
+        if (!question.isEmpty()) {
+            String answer = getRandomAnswer();
+            outputText.setText(answer);
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Bonk, please enter a question");
+        }
+        if (e.getSource() == clear) {
+            input.setText("");
+            outputText.setText("");
+        }
+       }
     }
     
+    private String getRandomAnswer(){
+    String[] answers = {
+        "It is certain.",
+        "It is decidedly so.",
+        "Without a doubt.",
+        "Yes – definitely.",
+        "You may rely on it.",
+        "As I see it, yes.",
+        "Most likely.",
+        "Outlook good.",
+        "Yes.",
+        "Signs point to yes.",
+        "Reply hazy, try again.",
+        "Ask again later.",
+        "Better not tell you now.",
+        "Cannot predict now.",
+        "Concentrate and ask again.",
+        "Don't count on it.",
+        "My reply is no.",
+        "My sources say no.",
+        "Outlook not so good.",
+        "Very doubtful.",
+        "Are you serious?",
+        "This...hmmm"
+    };
+    Random random = new Random();
+    int index = random.nextInt(answers.length);
+    return answers[index];
+    }
 }
 
 public class Magic_8Ball {
