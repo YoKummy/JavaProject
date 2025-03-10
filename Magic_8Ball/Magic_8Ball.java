@@ -31,7 +31,7 @@ class frame extends JFrame implements ActionListener{
         input = new JTextField();
 
         input.setText("");
-        input.setBounds(130, 20, 400, 20);
+        input.setBounds(140, 20, 400, 20);
         input.setColumns(20);
         input.setEditable(true);
 
@@ -76,11 +76,11 @@ class frame extends JFrame implements ActionListener{
         else{
             JOptionPane.showMessageDialog(this, "Bonk, please enter a question");
         }
-        if (e.getSource() == clear) {
-            input.setText("");
-            outputText.setText("");
-        }
        }
+       if (e.getSource() == clear) {
+        input.setText(null);
+        outputText.setText(null);
+    }
     }
     
     private String getRandomAnswer(){
