@@ -89,6 +89,17 @@ public class Main {
             g.setColor(Color.BLACK);
             g.drawRect(m, m, w - 2*m, h - 2*m);
             // TODO：繪製圓點            
+            double spacing = (double)(w - 2 * m) / (size - 1);
+
+            for (int i = 0; i < size; i++) 
+            {
+                int x = m + (int)(i * spacing);
+                int scaledHeight = (int) ((double) data[i] / size * (h - 2 * m));
+                int y = h - m - scaledHeight;
+
+                g.setColor(Color.BLUE);
+                g.fillOval(x, y, 8, 8);
+            }
             // 設定該原點顏色
             g.setColor(Color.BLACK);
             // fillOval(欲繪製的x軸位置, 欲繪製的y軸位置, 長, 寬)
@@ -101,7 +112,7 @@ public class Main {
             String algo = (String) selector.getSelectedItem();
             if ("Merge Sort".equals(algo)) {
              //TODO
-             mergeSort();
+             mergeSort(data);
             } else {
              //TODO
              selectionSort();
@@ -116,10 +127,10 @@ public class Main {
         //TODO: selection sort
         private void selectionSort() 
         {
-            for (int i = 0; i < data.length - 2; i++)
+            for (int i = 0; i < data.length - 1; i++)
             {
                 int min = i;
-                for (int j = i + 1; j < data.length - 1; j++)
+                for (int j = i + 1; j < data.length; j++)
                 {
                     if(data[j] < data[min])
                     {
@@ -129,18 +140,112 @@ public class Main {
                 int temp = data[i];
                 data[i] = data[min];
                 data[min] = temp;
+                repaint();
+                sleep(10);
             }
         }
 
         //TODO: merge sort
-        private void mergeSort() 
-        {
-            if(data.length > 1)
-            {
-                int mid = data.length / 2;
-                int []left = new int [mid];
+
+        private void mergeSort(int[] A) {
+            if (A.length <= 1) return;
+        
+            int mid = A.length / 2;
+            int[] B = new int[mid];
+            int[] C = new int[A.length - mid];
+        
+            // Copy data into B and C
+            for (int i = 0; i < mid; i++) B[i] = A[i];
+            for (int i = mid; i < A.length; i++) C[i - mid] = A[i];
+        
+            mergeSort(B);
+            mergeSort(C);
+            merge(B, C, A);
+        }
+        
+        private void merge(int[] B, int[] C, int[] A) {
+            int i = 0, j = 0, k = 0;
+            while (i < B.length && j < C.length) {
+                if (B[i] <= C[j]) {
+                    A[k++] = B[i++];
+                } else {
+                    A[k++] = C[j++];
+                }
+                repaint();
+                sleep(10);
+            }
+        
+            while (i < B.length) {
+                A[k++] = B[i++];
+                repaint();
+                sleep(10);
+            }
+        
+            while (j < C.length) {
+                A[k++] = C[j++];
+                repaint();
+                sleep(10);
             }
         }
+        
+
+        /* private void mergeSort(int A[]) 
+        {
+            if(A.length <= 1) return;
+            int mid = A.length / 2;
+
+            int B[] = new int[mid];
+            int C[] = new int[A.length - mid];
+
+            for (int i = 0; i < mid; i++) B[i] = A[i];
+            for (int i = mid; i < A.length; i++) C[i - mid] = A[i];
+
+            mergeSort(B);
+            mergeSort(C);
+            merge(B, C, A);
+        }
+
+        private void merge(int B[], int C[], int A[])
+        {
+            int i =0, j = 0, k = 0;
+            while(i < B.length && j < C.length)
+            {
+                if(B[i] <= C[j])
+                {
+                    A[k] = B[i];
+                    i++;
+                }
+                else if(A[k] > C[j])
+                {
+                    A[k] = C[j];
+                    j++;
+                }
+                k++;
+            }
+
+            if(i < B.length)
+            {
+                while(j < C.length)
+                {
+                    A[k] = C[j];
+                    j++;
+                    k++;
+                    repaint();
+                    sleep(10);
+                }
+            }
+            else
+            {
+                while(j < C.length)
+                {
+                    A[k] = B[i];
+                    i++;
+                    k++;
+                    repaint();
+                    sleep(10);
+                }
+            }
+        } */
 
         /** 簡單延遲 */
         private void sleep(int ms) {

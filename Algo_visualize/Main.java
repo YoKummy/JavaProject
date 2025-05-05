@@ -76,9 +76,6 @@ public class Main {
 
             if (data == null) return;
 
-            int dotSize = 8;
-            int maxVal = size;
-
             double spacing = (double)(w - 2 * m) / (size - 1);
 
             for (int i = 0; i < size; i++) 
