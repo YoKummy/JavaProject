@@ -146,106 +146,54 @@ public class Main {
         }
 
         //TODO: merge sort
-
+        // Entry point for merge sort
         private void mergeSort(int[] A) {
-            if (A.length <= 1) return;
-        
-            int mid = A.length / 2;
-            int[] B = new int[mid];
-            int[] C = new int[A.length - mid];
-        
-            // Copy data into B and C
-            for (int i = 0; i < mid; i++) B[i] = A[i];
-            for (int i = mid; i < A.length; i++) C[i - mid] = A[i];
-        
-            mergeSort(B);
-            mergeSort(C);
-            merge(B, C, A);
+            mergeSort(A, 0, A.length - 1);
         }
-        
-        private void merge(int[] B, int[] C, int[] A) {
-            int i = 0, j = 0, k = 0;
+
+        // Recursive helper
+        private void mergeSort(int[] A, int left, int right) {
+            if (left >= right) return;
+
+            int mid = (left + right) / 2;
+
+            mergeSort(A, left, mid);
+            mergeSort(A, mid + 1, right);
+            merge(A, left, mid, right);
+        }
+
+        // Merge logic with visualization
+        private void merge(int[] A, int left, int mid, int right) {
+            int[] B = new int[mid - left + 1];
+            int[] C = new int[right - mid];
+
+            for (int i = 0; i < B.length; i++) B[i] = A[left + i];
+            for (int i = 0; i < C.length; i++) C[i] = A[mid + 1 + i];
+
+            int i = 0, j = 0, k = left;
+
             while (i < B.length && j < C.length) {
                 if (B[i] <= C[j]) {
                     A[k++] = B[i++];
                 } else {
                     A[k++] = C[j++];
                 }
-                repaint();
-                sleep(10);
             }
-        
+
             while (i < B.length) {
                 A[k++] = B[i++];
                 repaint();
                 sleep(10);
             }
-        
+
             while (j < C.length) {
                 A[k++] = C[j++];
                 repaint();
                 sleep(10);
             }
         }
+
         
-
-        /* private void mergeSort(int A[]) 
-        {
-            if(A.length <= 1) return;
-            int mid = A.length / 2;
-
-            int B[] = new int[mid];
-            int C[] = new int[A.length - mid];
-
-            for (int i = 0; i < mid; i++) B[i] = A[i];
-            for (int i = mid; i < A.length; i++) C[i - mid] = A[i];
-
-            mergeSort(B);
-            mergeSort(C);
-            merge(B, C, A);
-        }
-
-        private void merge(int B[], int C[], int A[])
-        {
-            int i =0, j = 0, k = 0;
-            while(i < B.length && j < C.length)
-            {
-                if(B[i] <= C[j])
-                {
-                    A[k] = B[i];
-                    i++;
-                }
-                else if(A[k] > C[j])
-                {
-                    A[k] = C[j];
-                    j++;
-                }
-                k++;
-            }
-
-            if(i < B.length)
-            {
-                while(j < C.length)
-                {
-                    A[k] = C[j];
-                    j++;
-                    k++;
-                    repaint();
-                    sleep(10);
-                }
-            }
-            else
-            {
-                while(j < C.length)
-                {
-                    A[k] = B[i];
-                    i++;
-                    k++;
-                    repaint();
-                    sleep(10);
-                }
-            }
-        } */
 
         /** 簡單延遲 */
         private void sleep(int ms) {
